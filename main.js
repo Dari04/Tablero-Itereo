@@ -13,16 +13,21 @@ $.ajax({
     success : function(json) {
         console.log(json)
         for (i = 0; i < json.Services.length; i++) { 
-        var content = '<tr>' + 
-        '<td class="one">'+ json.Services[i].ser_name +'</td>' + 
-        '<td class="two">'+ json.Services[i].svt_id +'</td>' + 
-        '<td class="three">'+ json.Services[i].date +'</td>' + 
-        '<td class="four">--</td>' + 
-        '<td class="five">'+ ((json.Services[i].ngt_qty == undefined) ? "-" : json.Services[i].ngt_qty) +'</td>' +
-        '</tr>';
-    	//Agregar elementos
-    	$( '#services' ).append( $(content) );
-}
+            var currentDate = new Date(json.Services[i].date);
+            var daysToAdd = (json.Services[i].ngt_qty == undefined) ? 0 : parseInt(json.Services[i].ngt_qty);
+            var toDate = new Date();
+            toDate.setDate(currentDate.getDate() + daysToAdd); 
+
+            var content = '<tr>' + 
+            '<td class="one">'+ json.Services[i].ser_name +'</td>' + 
+            '<td class="two">'+ json.Services[i].svt_id +'</td>' + 
+            '<td class="three">'+ json.Services[i].date +'</td>' + 
+            '<td class="four">'+ (toDate) +'</td>' + 
+            '<td class="five">'+ ((json.Services[i].ngt_qty == undefined) ? "-" : json.Services[i].ngt_qty) +'</td>' +
+            '</tr>';
+        	//Agregar elementos
+        	$( '#services' ).append( $(content) );
+        }
 
     },
  

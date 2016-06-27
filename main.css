@@ -1,0 +1,26 @@
+body{
+    font-family: Arial;
+    text-align: center;
+}
+table{
+        border: 1px solid black;
+}
+th{
+    color:red;
+    border-right:1px solid black;
+}
+.none{
+     border-right:none;
+}
+.one{
+    text-align: justify;
+    border-top:1px solid black;
+    border-right:1px solid black;
+}
+.two,.three,.four{
+     border-top:1px solid black;
+     border-right:1px solid black;
+}
+.five{
+     border-top:1px solid black;
+}
